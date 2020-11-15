@@ -4,9 +4,11 @@ import shutil
 import random
 
 def split_dataset(training_path, classes_path, root_training_path, 
-                  root_validation_path, training_percentage=0.70):
+                  root_validation_path, training_percentage=0.90):
     # training_path -> "./MaskDataset/training"
     # classes_path -> "./MaskDataset/train_gt.json"
+
+    random.seed(1234)
 
     with open(classes_path) as classes_json:
         classes = json.load(classes_json)
@@ -51,3 +53,5 @@ def split_dataset(training_path, classes_path, root_training_path,
         shutil.copy2(class2_image, class2_training_path)
     for class2_image in class2[class2_split:]:
         shutil.copy2(class2_image, class2_validation_path)
+
+split_dataset("./MaskDataset/training", "./MaskDataset/train_gt.json", "./data/training", "./data/validation")
