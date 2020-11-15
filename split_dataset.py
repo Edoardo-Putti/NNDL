@@ -50,4 +50,4 @@ def split_dataset(training_path, classes_path, root_training_path,
     for class2_image in class2[0:class2_split]:
         shutil.copy2(class2_image, class2_training_path)
     for class2_image in class2[class2_split:]:
-        shutil.copy2(class2_image, class2_training_path)
+        shutil.copy2(class2_image, class2_validation_path)
